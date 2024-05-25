@@ -1,0 +1,101 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decryption Result</title>
+</head>
+<body>
+    <h1>Decryption Result</h1>
+    {% if image_paths %}
+        {% for image_path in image_paths %}
+            <a href="{{ image_path }}" download="Decrypted_Image{{ loop.index }}">Download Image</a>
+            <br>
+        {% endfor %}
+    {% else %}
+        <p>No images to display.</p>
+    {% endif %}
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decryption Result</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyZkkmaU8NBEvrc1hPz2YxI2c4FMIq7xS" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #87CEEB; /* Sky blue background color */
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff; /* White background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 2em; /* Larger font size */
+            color: #007bff; /* Bootstrap primary color */
+        }
+
+        .btn-download {
+            margin-top: 15px;
+            font-size: 1.5em; /* Larger font size for the button */
+            background-color: #28a745; /* Bootstrap success color - green */
+            border-color: #28a745;
+            color: #ffffff; /* Text color for better contrast */
+            transition: background-color 0.3s ease-in-out; /* Smooth transition effect */
+        }
+
+        .btn-download:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Decryption Result</h1>
+        {% if image_paths %}
+            {% for image_path in image_paths %}
+                <div class="text-center">
+                    <!-- You can add additional styling here if needed -->
+                </div>
+                <!-- Use Bootstrap button class and style -->
+                <button class="btn btn-success btn-block btn-download" onclick="downloadImage('{{ image_path }}', 'Decrypted_Image{{ loop.index }}')">Download Image</button>
+                <br>
+            {% endfor %}
+        {% else %}
+            <p>No images to display.</p>
+        {% endif %}
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js scripts (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-xUZOsxmBLL8BIRkUsP5eJeUpRsZp/P6PU7zJ/N9p1qUao6BvGwbI3Z9nsPUpJANd" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyZkkmaU8NBEvrc1hPz2YxI2c4FMIq7xS" crossorigin="anonymous"></script>
+
+    <script>
+        function downloadImage(imagePath, fileName) {
+            var link = document.createElement('a');
+            link.href = imagePath;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Image Encryption Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #87CEEB; /* Sky Blue */
+            color: #000;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            background-color: #2ecc71; /* Green */
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        a:hover {
+            background-color: #27ae60;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        img {
+            max-width: 100%;
+            margin-top: 10px;
+            display: none; /* Initially hide images */
+        }
+    </style>
+</head>
+<body>
+    <button onclick="history.back()">Back</button>
+    <h1>Multiple Image Encryption Result</h1>
+
+    <h2>RNA Sequence</h2>
+    <p><a href="{{ rna_filename }}" download="mutated_rna_multiple.txt">Download RNA Sequences</a></p>
+
+    <h2>Encrypted Images</h2>
+    {% for encrypted_image_path in encrypted_image_paths %}
+        <img src="{{ encrypted_image_path }}" alt="Encrypted Image">
+    {% endfor %}
+
+  
+
+    <button id="toggleImagesButton" onclick="toggleImages()">Toggle Encrypted Images</button>
+
+    <!-- <button onclick="location.href='index.html'">Go to Index</button> -->
+    
+
+
+    <script>
+        function toggleImages() {
+            var images = document.querySelectorAll('img');
+            images.forEach(function(image) {
+                image.style.display = (image.style.display === 'none' || image.style.display === '') ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
